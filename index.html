@@ -2,162 +2,161 @@
 <html lang="en">
 
 <head>
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minji Bot - Assistant</title>
-  <!-- Fevicon -->
-  <link rel="shortcut icon" href="image/IMG-20240924-WA0011(1).jpg" type="image/x-icon">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <style>
-      body {
-          background-color: #121212;
-          color: #ffffff;
-          font-family: 'Arial', sans-serif;
-          overflow-x: hidden;
-      }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minji Bot - Assistant</title>
+    <!-- Fevicon -->
+    <link rel="shortcut icon" href="image/IMG-20240924-WA0011(1).jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
 
-      .hero {
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          padding: 20px;
-      }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-      .hero h1 {
-          font-size: 3rem;
-          margin-bottom: 20px;
-          animation: fadeIn 2s;
-          background: linear-gradient(
-              104.04deg,
-              #1472ff -4%,
-              #47a9ff 23%,
-              #adc3ff 50%,
-              #ffadc9 77%,
-              #ff476b 104%
-          );
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          max-width: fit-content;
-          transition: transform 0.3s;
-      }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+            background: linear-gradient(
+                104.04deg,
+                #1472ff -4%,
+                #47a9ff 23%,
+                #adc3ff 50%,
+                #ffadc9 77%,
+                #ff476b 104%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: fit-content;
+            transition: transform 0.3s;
+        }
 
-      .hero h1:hover {
-          transform: scale(1.05); /* Efek zoom saat hover */
-      }
+        .hero h1:hover {
+            transform: scale(1.05);
+        }
 
-      .hero p {
-          font-size: 1.2rem;
-          margin-bottom: 30px;
-          animation: fadeIn 2s 0.5s forwards;
-      }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeIn 2s 0.5s forwards;
+        }
 
-      .btn-custom {
-          background: linear-gradient(90deg, #00c6ff, #0072ff);
-          color: #ffffff;
-          padding: 15px 30px;
-          font-size: 1.2rem;
-          border-radius: 30px;
-          transition: transform 0.3s, box-shadow 0.3s;
-          text-decoration: none;
-          border: none;
-      }
+        .btn-custom {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            border: none;
+            margin: 10px; /* Tambahin margin untuk jarak antar tombol */
+        }
 
-      .btn-custom:hover {
-          transform: scale(1.05);
-          box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
-      }
+        .btn-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
+        }
 
-      @keyframes fadeIn {
-          from {
-              opacity: 0;
-              transform: translateY(-20px);
-          }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
 
-          to {
-              opacity: 1;
-              transform: translateY(0);
-          }
-      }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-      /* Loading style */
-      .loading {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(18, 18, 18, 0.9);
-          justify-content: center;
-          align-items: center;
-          z-index: 1000;
-          backdrop-filter: blur(5px);
-      }
+        /* Loading style */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(18, 18, 18, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
 
-      .loader {
-          width: 120px;
-          height: 22px;
-          border-radius: 40px;
-          color: #0072ff; /* Warna diganti sesuai preferensi */
-          border: 2px solid;
-          position: relative;
-          overflow: hidden;
-      }
+        .loader {
+            width: 120px;
+            height: 22px;
+            border-radius: 40px;
+            color: #0072ff;
+            border: 2px solid;
+            position: relative;
+            overflow: hidden;
+        }
 
-      .loader::before {
-          content: "";
-          position: absolute;
-          margin: 2px;
-          width: 14px;
-          top: 0;
-          bottom: 0;
-          left: -20px;
-          border-radius: inherit;
-          background: currentColor;
-          box-shadow: -10px 0 12px 3px currentColor;
-          clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%, -30px 50%);
-          animation: l14 1s infinite linear;
-      }
+        .loader::before {
+            content: "";
+            position: absolute;
+            margin: 2px;
+            width: 14px;
+            top: 0;
+            bottom: 0;
+            left: -20px;
+            border-radius: inherit;
+            background: currentColor;
+            box-shadow: -10px 0 12px 3px currentColor;
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%, -30px 50%);
+            animation: l14 1s infinite linear;
+        }
 
-      @keyframes l14 {
-          100% {
-              left: calc(100% + 20px);
-          }
-      }
+        @keyframes l14 {
+            100% {
+                left: calc(100% + 20px);
+            }
+        }
 
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-          .hero h1 {
-              font-size: 2.5rem; /* Ukuran font lebih kecil di perangkat kecil */
-          }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-          .hero p {
-              font-size: 1rem; /* Ukuran font lebih kecil di perangkat kecil */
-          }
+            .hero p {
+                font-size: 1rem;
+            }
 
-          .btn-custom {
-              padding: 10px 20px; /* Padding lebih kecil di perangkat kecil */
-              font-size: 1rem; /* Ukuran font lebih kecil di perangkat kecil */
-          }
-      }
+            .btn-custom {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
 
-      @media (max-width: 576px) {
-          .hero h1 {
-              font-size: 2rem; /* Ukuran font lebih kecil di perangkat sangat kecil */
-          }
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
 
-          .hero p {
-              font-size: 0.9rem; /* Ukuran font lebih kecil di perangkat sangat kecil */
-          }
-      }
-
-  </style>
+            .hero p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -166,6 +165,9 @@
         <p>MINJI adalah asisten kecerdasan buatan yang dirancang untuk memberikan solusi cerdas dan inovatif dalam memberikan jawaban yang tepat dan relatif mengenai informasi terkini secara real-time.</p>
         <a href="#" id="join-button" class="btn btn-custom">
             Get Started <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="donasi.html" class="btn btn-custom">
+            Donasi Sekarang 💖
         </a>
     </div>
 
@@ -178,10 +180,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script>
         document.getElementById('join-button').addEventListener('click', function (event) {
-            event.preventDefault(); // Mencegah default link
-            document.getElementById('loading').style.display = 'flex'; // Tampilkan efek loading
+            event.preventDefault();
+            document.getElementById('loading').style.display = 'flex';
             setTimeout(function () {
-                window.location.href = 'https://whatsapp.com/channel/0029ValInwl4dTnAaF80OZ3s'; // Redirect setelah 3 detik
+                window.location.href = 'https://whatsapp.com/channel/0029ValInwl4dTnAaF80OZ3s';
                 document.getElementById('loading').style.display = 'none';
             }, 3000);
         });
