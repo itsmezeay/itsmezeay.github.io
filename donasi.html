@@ -155,13 +155,19 @@
                 html: `
                     <p class="text-gray-600">Terimakasih Telah Berdonasi!</p>
                     <div class="mt-4">
-                        <img src="${qr.createDataURL(10)}" alt="Kode Donasi Digital" class="mx-auto" style="max-width: 250px;">
+                        <img id="qrcodeImage" src="${qr.createDataURL(10)}" alt="Kode Donasi Digital" class="mx-auto" style="max-width: 250px;">
                     </div>
+                    <a id="downloadLink" href="#" download="qrcode.png" class="mt-4 inline-block text-teal-500 underline">Unduh Gambar QR</a>
                 `,
                 confirmButtonText: 'Tutup Misi',
                 confirmButtonColor: '#3B82F6',
                 background: '#f0f9ff',
             });
+
+            // Set download link
+            const downloadLink = document.getElementById('downloadLink');
+            const qrcodeImage = document.getElementById('qrcodeImage');
+            downloadLink.href = qrcodeImage.src;
         }
 
         function convertQRIS() {
